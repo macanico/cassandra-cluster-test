@@ -34,8 +34,18 @@ class cassandra {
     
     package { 'cassandra=2.0.11':
         ensure => installed,
+        audit  => all,
+        notify => Exec['delete_default_data_files'],
+    }
+    
+    exec{'delete_default_data_files':
+    refreshonly  => true,
+    command      => "service cassandra stop && rm -rf /var/lib/cassandra/data/system/",
     }
     
 #remove the default data files    
+
+
+
 
 }
