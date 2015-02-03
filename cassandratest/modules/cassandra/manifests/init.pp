@@ -36,6 +36,6 @@ class cassandra {
         ensure => installed,
     }
     
-    
+#remove the default data files    
 
 }
